@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Bubbling Example</title>
+</head>
+<body>
+    <div id="outer" style="padding: 20px; background: lightblue;">
+        Outer Div
+        <div id="middle" style="padding: 20px; background: lightgreen;">
+            Middle Div
+            <div id="inner" style="padding: 20px; background: lightcoral;">
+                Inner Div
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Select elements
+        const outerDiv = document.getElementById('outer');
+        const middleDiv = document.getElementById('middle');
+        const innerDiv = document.getElementById('inner');
+
+        // Add event listeners
+        outerDiv.addEventListener('click', () => {
+            console.log('Outer Div Clicked');
+        });
+
+        middleDiv.addEventListener('click', () => {
+            console.log('Middle Div Clicked');
+        });
+
+        innerDiv.addEventListener('click', () => {
+            console.log('Inner Div Clicked');
+        });
+
+        setInterval(()=>{
+            document.querySelector('.middle').style.backgroundcolor = "red";
+        }, 2000s)
+    </script>
+</body>
+</html>

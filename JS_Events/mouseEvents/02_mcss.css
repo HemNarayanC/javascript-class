@@ -1,0 +1,14 @@
+/* styles.css */
+.box {
+    border: 2px solid red;
+    color: black;
+    padding: 20px;
+    width: 200px;
+    text-align: center;
+    /* transition: border-color 0.3s, color 0.3s; */
+}
+
+.hovered {
+    border-color: green;
+    color: red;
+}

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Background Color</title>
+</head>
+<body>
+    <div id="colorBox" style="width: 100px; height: 100px; background-color: lightblue;"></div>
+
+    <script>
+        const colors = ['lightblue', 'lightgreen', 'lightcoral', 'lightyellow'];
+        let currentColorIndex = 0;
+
+        setInterval(() => {
+            currentColorIndex = (currentColorIndex + 1) % colors.length;
+            document.getElementById('colorBox').style.backgroundColor = colors[currentColorIndex];
+        }, 2000); // Change every 2 seconds
+    </script>
+</body>
+</html>

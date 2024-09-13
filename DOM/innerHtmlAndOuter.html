@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inner and Outer Html</title>
+</head>
+<body>
+    <div class="container" style="color: green">
+        <p>This is a sample paragraph</p>
+        <div class="box">Hi! This is a Box.</div>
+    </div>
+
+    <div class="hem javascript">This is new Class</div>
+
+    <script>
+        let anchor = document.createElement("a");
+        anchor.href="https://www.facebook.com"
+        anchor.innerHTML = "Facebook";
+        let cont = document.getElementsByClassName("container")[0];
+        cont.append(anchor);
+
+        let span = document.createElement("span");
+        span.setAttribute("style" , "padding: 20px; border: 2px solid red")
+        span.innerHTML = "This is Span before container";
+        let cont01 = document.querySelector(".container");
+        cont01.after(span)
+    </script>
+</body>
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Calculator</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+
+        .calculator {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            width: 360px;
+        }
+
+        .display {
+            background-color: #333;
+            color: #fff;
+            font-size: 1.8em;
+            text-align: right;
+            padding: 15px;
+            box-sizing: border-box;
+            overflow-wrap: break-word;
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+        }
+
+        .btn {
+            background-color: #e0e0e0;
+            border: none;
+            font-size: 1.2em;
+            padding: 15px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .btn:hover {
+            background-color: #d0d0d0;
+        }
+
+        .btn-clear {
+            background-color: #ff6f6f;
+            color: #fff;
+            grid-column: span 2;
+        }
+
+        .btn-clear:hover {
+            background-color: #ff4d4d;
+        }
+
+        .btn-operator {
+            background-color: #ff9800;
+            color: #fff;
+        }
+
+        .btn-operator:hover {
+            background-color: #e68900;
+        }
+
+        .btn-equal {
+            background-color: #4caf50;
+            color: #fff;
+            grid-column: span 2;
+        }
+
+        .btn-equal:hover {
+            background-color: #43a047;
+        }
+
+        .btn-zero {
+            grid-column: span 2;
+        }
+
+        .btn-trig {
+            background-color: #9e9e9e;
+            color: #fff;
+        }
+
+        .btn-trig:hover {
+            background-color: #757575;
+        }
+
+        .btn-memory {
+            background-color: #2196f3;
+            color: #fff;
+        }
+
+        .btn-memory:hover {
+            background-color: #1976d2;
+        }
+
+        .memory {
+            font-size: 1em;
+            text-align: left;
+            padding: 10px;
+            background-color: #e3f2fd;
+            border-bottom: 1px solid #b3e5fc;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <div class="memory" id="memory">Memory: None</div>
+        <div class="display" id="display">0</div>
+        <div class="buttons">
+            <button class="btn btn-clear" onclick="clearDisplay()">C</button>
+            <button class="btn btn-operator" onclick="appendToDisplay('/')">/</button>
+            <button class="btn btn-operator" onclick="appendToDisplay('*')">*</button>
+            <button class="btn btn-operator" onclick="appendToDisplay('-')">-</button>
+            <button class="btn" onclick="appendToDisplay('7')">7</button>
+            <button class="btn" onclick="appendToDisplay('8')">8</button>
+            <button class="btn" onclick="appendToDisplay('9')">9</button>
+            <button class="btn btn-operator" onclick="appendToDisplay('+')">+</button>
+            <button class="btn" onclick="appendToDisplay('4')">4</button>
+            <button class="btn" onclick="appendToDisplay('5')">5</button>
+            <button class="btn" onclick="appendToDisplay('6')">6</button>
+            <button class="btn btn-equal" onclick="calculateResult()">=</button>
+            <button class="btn" onclick="appendToDisplay('1')">1</button>
+            <button class="btn" onclick="appendToDisplay('2')">2</button>
+            <button class="btn" onclick="appendToDisplay('3')">3</button>
+            <button class="btn btn-zero" onclick="appendToDisplay('0')">0</button>
+            <button class="btn" onclick="appendToDisplay('.')">.</button>
+            <button class="btn btn-trig" onclick="calculateTrig('sin')">sin</button>
+            <button class="btn btn-trig" onclick="calculateTrig('cos')">cos</button>
+            <button class="btn btn-trig" onclick="calculateTrig('tan')">tan</button>
+            <button class="btn btn-memory" onclick="saveMemory()">Save</button>
+            <button class="btn btn-memory" onclick="recallMemory()">Recall</button>
+        </div>
+    </div>
+
+    <script>
+        let display = document.getElementById('display');
+        let memory = document.getElementById('memory');
+        let savedFormula = '';
+
+        function appendToDisplay(value) {
+            if (display.innerText === '0' && value !== '.') {
+                display.innerText = value;
+            } else {
+                display.innerText += value;
+            }
+        }
+
+        function clearDisplay() {
+            display.innerText = '0';
+        }
+
+        function calculateResult() {
+            try {
+                display.innerText = eval(display.innerText);
+            } catch {
+                display.innerText = 'Error';
+            }
+        }
+
+        function calculateTrig(func) {
+            try {
+                let angle = parseFloat(display.innerText);
+                let radians = angle * (Math.PI / 180); // Convert degrees to radians
+                switch (func) {
+                    case 'sin':
+                        display.innerText = Math.sin(radians);
+                        break;
+                    case 'cos':
+                        display.innerText = Math.cos(radians);
+                        break;
+                    case 'tan':
+                        display.innerText = Math.tan(radians);
+                        break;
+                    default:
+                        display.innerText = 'Error';
+                        break;
+                }
+            } catch {
+                display.innerText = 'Error';
+            }
+        }
+
+        function saveMemory() {
+            savedFormula = display.innerText;
+            memory.innerText = `Memory: ${savedFormula}`;
+        }
+
+        function recallMemory() {
+            display.innerText = savedFormula || '0';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+const a = parseFloat(prompt("Enter the first number"));
+const b = parseFloat(prompt("Enter the second number"));
+let sum = a + b;
+let diff = a - b;
+let pro = a * b;
+let div = a / b;
+console.log("Sum: " + sum);
+console.log("Difference: " + diff);
+console.log("Product: " + pro);
+console.log("Division: " + div);

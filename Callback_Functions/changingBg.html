@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Changing Background</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .container{
+        width: 60%;
+        margin: 60px auto;
+        display: flex;
+        gap: 50px;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    #start, #stop{
+        margin: 0 15px;
+        width: 70px;
+        height: 25px;
+        outline: none;
+        border: none;
+        background-color: rgb(171, 235, 235);
+        box-shadow: 1px 1px 2px 2px rgb(236, 234, 233, 0.5);
+    }
+
+
+</style>
+<body>
+    <div class="container">
+        <div class="heading">
+            <h1>Welcome To Explore The Continuous Changing Background</h1>
+        </div>
+        <div class="buttons">
+            <button id="start">Start</button>
+            <button id="stop">Stop</button>
+        </div>
+    </div>
+    <script src="changingBg.js"></script>
+</body>
+</html>
